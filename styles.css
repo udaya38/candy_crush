@@ -1,0 +1,75 @@
+body {
+  background-image: url("images/candy_crush.jpg");
+  background-repeat: no-repeat;
+  text-align: center;
+}
+/* #notifypop {
+  display: none;
+} */
+h1 {
+  color: red;
+}
+img{
+  cursor: pointer;
+}
+#main-container {
+  display: flex;
+  justify-content: center;
+}
+#board {
+  display: grid;
+  grid-template-columns: repeat(9, 50px);
+  grid-gap: 3px;
+  background-color: rgba(109, 127, 151, 0.5);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #fff;
+  cursor: pointer;
+}
+
+.candy {
+  width: 50px;
+  height: 50px;
+}
+
+.animate {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  /* 60% {
+      transform: scale(0.4);  
+  }
+  80% {
+      transform: scale(0.8);
+      opacity: 1; 
+  }    */
+  100% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+#play {
+  display: block;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #ed18ca;
+  color: #fff;
+  font-size: 20px;
+  width: 150px;
+  padding: 10px 0;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+#wrapper{
+  display: none;
+}
