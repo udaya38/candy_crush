@@ -146,13 +146,13 @@ function checkFour() {
         candyList[i][j + 1].src = "./images/blank.png";
         candyList[i][j + 2].src = "./images/blank.png";
         candyList[i][j + 3].src = "./images/blank.png";
-          setTimeout(() => {
-            candyList[i][j].classList.remove("animate");
-            candyList[i][j + 1].classList.remove("animate");
-            candyList[i][j + 2].classList.remove("animate");
-            candyList[i][j + 3].classList.remove("animate");
-          }, 1000);
-        score+=20;
+        setTimeout(() => {
+          candyList[i][j].classList.remove("animate");
+          candyList[i][j + 1].classList.remove("animate");
+          candyList[i][j + 2].classList.remove("animate");
+          candyList[i][j + 3].classList.remove("animate");
+        }, 1000);
+        score += 20;
         audioFour.play();
         isCrushed = true;
       }
@@ -184,7 +184,7 @@ function checkFour() {
           candyList[j + 2][i].classList.remove("animate");
           candyList[j + 3][i].classList.remove("animate");
         }, 1000);
-        score+=20;
+        score += 20;
         audioFour.play();
         isCrushed = true;
       }
@@ -244,7 +244,7 @@ function checkThree() {
             candyList[i][j + 1].src = "./images/blank.png";
             candyList[i][j + 2].src = "./images/blank.png";
           }
-          score+=50;
+          score += 50;
           audioFour.play();
         } else {
           candyList[i][j].classList.add("animate");
@@ -258,7 +258,7 @@ function checkThree() {
             candyList[i][j + 1].classList.remove("animate");
             candyList[i][j + 2].classList.remove("animate");
           }, 1000);
-          score+=10;
+          score += 10;
           audio.play();
         }
         isCrushed = true;
@@ -313,7 +313,7 @@ function checkThree() {
               }, 1000);
             }
           }
-          score+=50;
+          score += 50;
           audioFour.play();
         } else {
           candyList[j][i].classList.add("animate");
@@ -327,7 +327,7 @@ function checkThree() {
             candyList[j + 1][i].classList.remove("animate");
             candyList[j + 2][i].classList.remove("animate");
           }, 1000);
-          score+=10;
+          score += 10;
           audio.play();
         }
         isCrushed = true;
@@ -384,6 +384,14 @@ function dragDrop(event) {
   droppedTile = this;
   //console.log("drop", event.target);
 }
+function touchStart(event) {
+  draggedTile = this;
+}
+
+function touchEnd(event) {
+  droppedTile = this;
+  dragEnd();
+}
 
 function dragEnd() {
   //console.log("end", event.target);
@@ -422,7 +430,7 @@ function dragEnd() {
       const four = checkFour();
       const three = checkThree();
       if (!four && !three) break;
-      document.getElementById("score").innerText=score;
+      document.getElementById("score").innerText = score;
       slideCandy();
     }
   }
@@ -444,6 +452,9 @@ async function init() {
       tile.addEventListener("drop", dragDrop); //dropping a candy over another candy
       tile.addEventListener("dragend", dragEnd); //after drag process completed, we swap candies
 
+      //touch events for mobile
+      tile.addEventListener("touchstart", touchStart); //click on a candy, initialize drag process
+      tile.addEventListener("touchend", touchEnd); //clicking on candy, moving mouse to drag the candy
       row.push(tile);
 
       board.appendChild(tile);
@@ -484,7 +495,7 @@ document.getElementById("play").addEventListener(
       const four = checkFour();
       const three = checkThree();
       if (!four && !three) break;
-      document.getElementById("score").innerText=score;
+      document.getElementById("score").innerText = score;
       slideCandy();
     }
   },

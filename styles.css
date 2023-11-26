@@ -9,7 +9,7 @@ body {
 h1 {
   color: red;
 }
-img{
+img {
   cursor: pointer;
 }
 #main-container {
@@ -18,7 +18,7 @@ img{
 }
 #board {
   display: grid;
-  grid-template-columns: repeat(9, 50px);
+  grid-template-columns: repeat(9, minmax(30px, 50px));
   grid-gap: 3px;
   background-color: rgba(109, 127, 151, 0.5);
   padding: 5px;
@@ -70,6 +70,6 @@ img{
   cursor: pointer;
 }
 
-#wrapper{
+#wrapper {
   display: none;
 }
